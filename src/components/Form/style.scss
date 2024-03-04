@@ -1,0 +1,33 @@
+@import '../../styles/vars';
+
+.form {
+  background: #fff;
+  height: 5rem;
+  display: flex;
+
+  &-input {
+    border: 0;
+    background: none;
+    width: calc(100% - 5rem);
+    padding: 2rem;
+    font-size: 1.5em;
+    background: white;
+    
+    :focus {
+      background-color: rgba(0,0,0,.1);
+    }
+  }
+
+  &-submit {
+    color: $normal-blue;
+    width: 5rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 1rem;
+
+    :hover {
+      color: $dark-blue;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../styles/vars';
+
+.messages {
+  padding: 2rem;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  .message {
+    text-align: right;
+    margin-bottom: 2rem;
+
+    &-author {
+      margin:0 2rem;
+      animation: fade 1s ease 0s 1;
+      
+      &::after {
+        content: "";
+        margin-left: auto;
+        display:block;
+        width:0;
+        border-bottom: 1rem solid $light-color;
+        border-left: 1rem solid transparent;
+      }
+    }
+
+    &-body {
+      border-radius: 2rem;
+      padding: 1.5rem;
+      background-color: $light-color;
+      color: $normal-blue;
+      display: inline-block;
+      min-width: 10em;
+      text-align: left;
+      animation: grow .3s $ease-out-back 0s 1;
+      transform-origin: 50% 0;
+    }
+
+    &--other {
+      text-align: left;
+
+      .message-author::after {
+        margin-left: 0;
+        border-bottom-color: white;
+      }
+    }
+  }
+}
