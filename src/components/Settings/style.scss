@@ -1,0 +1,44 @@
+@import '../../styles/vars';
+
+.settings {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  z-index: 2;
+
+  &-button {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    margin-left: auto;
+    margin-top:10px;
+    transition: transform .3s ease;
+    border: 0;
+    background-color: $normal-blue;
+    border-radius: 50%;
+    color: #fff;
+
+    &:hover {
+      background-color: adjust-color($color: $normal-blue, $lightness: -10%);
+    }
+
+    &--on {
+      transform: rotate(45deg);
+    }
+  }
+
+  &-form {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    animation: grow .3s $ease-out-back 0s 1;
+
+  }
+
+  &-input {
+    width: 20em;
+    padding: 1rem;
+    border: 1px solid $normal-blue;
+  }
+}
