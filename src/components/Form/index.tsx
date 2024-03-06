@@ -7,6 +7,7 @@ const Form = () => {
   const dispatch = useAppDispatch();
 
   const currentMessage = useAppSelector((state) => state.chat.currentMessage);
+  const pseudo = useAppSelector((state) => state.settings.pseudo);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateCurrentMessage(event.target.value));
@@ -14,10 +15,14 @@ const Form = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!pseudo) {
+      toast.error("CONNECTEZ VOUS!!!!!");
+      return;
+    }
     if (currentMessage !== "") {
-      dispatch(addMessage());
+      dispatch(addMessage(pseudo));
     } else {
-      toast.warn("Vous devez remplir ce champ",{});
+      toast.warn("Vous devez remplir ce champ", {});
     }
   };
 
@@ -26,9 +31,12 @@ const Form = () => {
       <input
         type='text'
         className='form-input'
-        placeholder={"Saisissez votre message..."}
+        placeholder={
+          pseudo ? "Saisissez votre message..." : "Veuillez vous connecter"
+        }
         value={currentMessage}
         onChange={handleChange}
+        disabled={!pseudo}
       />
       <button className='form-submit'>Envoyer</button>
     </form>
