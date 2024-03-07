@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import { addMessage, updateCurrentMessage } from "../../store/actions";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hook";
 import "./style.scss";
+import { sendMessage } from "../../socket/chat";
 
 const Form = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,8 @@ const Form = () => {
       return;
     }
     if (currentMessage !== "") {
-      dispatch(addMessage(pseudo));
+      sendMessage()
+      /* dispatch(addMessage(pseudo)); */
     } else {
       toast.warn("Vous devez remplir ce champ", {});
     }

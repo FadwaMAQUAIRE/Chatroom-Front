@@ -19,7 +19,7 @@ const chatReducer = createReducer(initialState, (builder) => {
     .addCase(addMessage, (state,action) => {
       state.messages = [
         ...state.messages,
-        { content: state.currentMessage, author: action.payload },
+        { content: action.payload.content, author: action.payload.author },
       ];
       state.currentMessage = "";
     });

@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { changeValues, connect, toggleSettings } from "../actions";
 import { toast } from "react-toastify";
+import { subscribeToNewMessages } from "../../socket/chat";
 
 interface SettingsState {
   isOpen: boolean;
@@ -30,6 +31,8 @@ const settingsReducer = createReducer(initialState, (builder) => {
     state.connectLoading=false;
     state.pseudo=action.payload.pseudo;
     state.isOpen=false
+    //On veut se connecter au server socket.io
+    subscribeToNewMessages()
   })
  .addCase(connect.rejected,(state,action)=>{
     state.connectLoading=false;

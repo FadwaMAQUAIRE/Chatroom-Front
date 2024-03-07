@@ -1,5 +1,6 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { IMessage } from "../../@Types";
 
 const UPDATE_CURRENT_MESSAGE = "UPDATE_CURRENT_MESSAGE";
 const ADD_MESSAGE = "ADD_MESSAGE";
@@ -16,11 +17,12 @@ export const connect = createAsyncThunk<
   return response.data
 });
 
+
 //Ici le paramètre envoyé lors de l'appel de cette fonction est automatiquement passé en payload
 export const updateCurrentMessage = createAction<string>(
   UPDATE_CURRENT_MESSAGE,
 );
-export const addMessage = createAction<string>(ADD_MESSAGE);
+export const addMessage = createAction<IMessage>(ADD_MESSAGE);
 export const changeValues = createAction<{ name: string; value: string }>(
   CHANGE_VALUES,
 );
