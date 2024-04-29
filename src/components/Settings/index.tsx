@@ -16,7 +16,6 @@ const Settings = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(email, password);
-
   dispatch(connect({email,password}))
   };
 
